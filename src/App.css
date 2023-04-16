@@ -1,38 +1,124 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+  background-color: rgb(163, 160, 172);
+  font-family: 'Lato', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  width: 50%;
+  min-width: 350px;
+  justify-content: center;
+  margin: 30px;
+  background-color: rgb(41, 36, 53);
+  color: whitesmoke;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
 }
 
-@keyframes App-logo-spin {
+.chat-header {
+  width: 100%;
+  height: 10%;
+  min-height: 75px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+.chat-chatbox {
+  height: 70%;
+  overflow: auto;
+  padding: 25px;
+  background-color: rgb(197, 197, 197);
+  color: rgb(71, 71, 71);
+  font-size: 18px;
+  line-height: 26px;
+  margin: 15px;
+  border-radius: 2px;
+}
+
+.new-message {
+  height: 15%;
+  width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-message-input {
+  width: 70%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-indent: 30px;
+  border-bottom-left-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.new-message-message {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  /* margin: 15px; */
+}
+
+.message-button {
+  width: 30%;
+  height: 100%;
+  cursor: pointer;
+  border-bottom-right-radius: 15px;
+  border: 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.loader {
+  width: 30px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Target the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(41, 36, 53);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(126, 117, 150);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
