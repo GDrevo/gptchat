@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Message from './Message'
-import dotenv from 'dotenv'
 
 const Chat = () => {
   // STATE
@@ -9,13 +8,11 @@ const Chat = () => {
   const [messageList, setMessageList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
-  dotenv.config()
-
   const instance = axios.create({
     baseURL: "https://api.openai.com/v1",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.API_KEY}`,
+      Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
     },
   });
 
@@ -81,7 +78,7 @@ const loader = <img className='loader' src="loader.png" alt="loader" />
             }}
             className='message-button'
           >
-            {isLoading ? loader : "Résumer..."}
+            {isLoading ? loader : "Résumer"}
           </button>
         </div>
       </div>

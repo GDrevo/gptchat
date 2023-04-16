@@ -46,8 +46,8 @@ h1 {
   color: rgb(71, 71, 71);
   font-size: 18px;
   line-height: 26px;
-  margin: 5px;
-  border-radius: 5px;
+  margin: 15px;
+  border-radius: 2px;
 }
 
 .new-message {
@@ -69,6 +69,7 @@ h1 {
   text-indent: 30px;
   border-bottom-left-radius: 15px;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .new-message-message {
@@ -84,7 +85,8 @@ h1 {
   cursor: pointer;
   border-bottom-right-radius: 15px;
   border: 0;
-  font-weight: bol*;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .loader {
@@ -99,4 +101,24 @@ h1 {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Target the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(41, 36, 53);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(126, 117, 150);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
