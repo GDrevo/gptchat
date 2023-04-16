@@ -66,8 +66,9 @@ h1 {
   margin: 0;
   padding: 0;
   border: 0;
-  text-indent: 15px;
+  text-indent: 30px;
   border-bottom-left-radius: 15px;
+  font-weight: bold;
 }
 
 .new-message-message {
@@ -83,4 +84,19 @@ h1 {
   cursor: pointer;
   border-bottom-right-radius: 15px;
   border: 0;
+  font-weight: bol*;
+}
+
+.loader {
+  width: 30px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

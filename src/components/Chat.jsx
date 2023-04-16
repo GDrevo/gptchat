@@ -1,33 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import Message from './Message'
+import dotenv from 'dotenv'
 
 const Chat = () => {
   // STATE
   const [newQuestion, setNewQuestion] = useState("")
   const [messageList, setMessageList] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+
+  dotenv.config()
 
   const instance = axios.create({
     baseURL: "https://api.openai.com/v1",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer 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`,
+      Authorization: `Bearer ${process.env.API_KEY}`,
     },
   });
 
   const askGPT = async (question) => {
+    setIsLoading(true)
     const response = await instance.post("/chat/completions", {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: question }],
     });
-
+    setIsLoading(false)
     return response.data.choices[0].message.content;
   }
 
 
   // BEHAVIOUR
   const handleSubmit = async () => {
-    const prompt = "Peux-tu me résumer en environ 200 mots le livre : " + newQuestion
+    const prompt = "Peux-tu me faire un teaser en environ 200 mots du livre : " + newQuestion
+
     const answer = await askGPT(prompt)
     setMessageList([
       {
@@ -39,7 +45,7 @@ const Chat = () => {
     setNewQuestion("")
   }
 
-
+const loader = <img className='loader' src="loader.png" alt="loader" />
 
   // RENDER
   return (
@@ -75,7 +81,7 @@ const Chat = () => {
             }}
             className='message-button'
           >
-            Résumer...
+            {isLoading ? loader : "Résumer..."}
           </button>
         </div>
       </div>
