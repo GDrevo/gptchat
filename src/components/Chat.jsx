@@ -29,17 +29,26 @@ const Chat = () => {
 
   // BEHAVIOUR
   const handleSubmit = async () => {
-    const prompt = "Peux-tu me faire un teaser en environ 200 mots du livre : " + newQuestion
-
-    const answer = await askGPT(prompt)
-    setMessageList([
-      {
-        question: newQuestion,
-        answer
-      },
-      ...messageList
-    ])
-    setNewQuestion("")
+    setIsLoading(true)
+    try {
+      const response = await axios.get(`http://localhost:8000/messages/${newQuestion}`)
+      // console.log(response)
+      const answer = response.data.answer
+      console.log("NEXT ONE")
+      console.log(answer)
+      setMessageList([
+        {
+          question: newQuestion,
+          answer
+        },
+        ...messageList
+      ])
+      console.log("setMessageList done")
+      setNewQuestion("")
+    } catch (error) {
+      console.error(error)
+    }
+    setIsLoading(false)
   }
 
 const loader = <img className='loader' src="loader.png" alt="loader" />
